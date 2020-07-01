@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2020-07-01 17:26:30
- * @LastEditTime: 2020-07-01 17:48:01
+ * @LastEditTime: 2020-07-01 18:06:55
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \H5Projects\chromeTest\js\background.js
@@ -27,3 +27,8 @@ chrome.contextMenus.create({
 })
 /* badge演示 */
 /* 监听来自content */
+chrome.runtime.onMessage.addListener(function(request,sender,sendResponse){
+    console.log('收到来自content-script的信息');
+    console.log(request,sender,sendResponse);
+    sendResponse("我是后台，我已收到你的消息："+JSON.stringify(request));
+})
